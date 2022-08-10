@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000
 
 let user = []
 
-app.post('/', (req, res) => {
+app.post('/user', (req, res) => {
 
     console.log(req.body);
 
@@ -16,16 +16,16 @@ app.post('/', (req, res) => {
   res.send('Agent Logged in!')
 })
 
-app.get('/', (req, res) => {
+app.get('/user', (req, res) => {
     res.send(user)
   })
 
-  app.put('/', (req, res) => {
+  app.put('/user', (req, res) => {
     res.send('Hello World!')
   })
 
 
-  app.delete('/', (req, res) => {
+  app.delete('/user', (req, res) => {
     res.send('Hello World!')
   })
 
