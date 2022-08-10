@@ -11,8 +11,8 @@ form {
 }
 
 .logo{
-    width: 70px;
-    margin-left: 160px;
+    width: 150px;
+    margin-left: 120px;
    
 
 }
@@ -79,7 +79,10 @@ h3 {
     text-align: center;
     width: auto;
     margin-top: 20px;
-    margin-left: 120px;
+    margin-left: 180px;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 30px;
 }
 
 #res {
@@ -111,9 +114,9 @@ button {
     }
 
     .logo {
-        width: 40px;
+        width: 137px;
         height: 40px;
-        margin-left: 135px;
+        margin-left: 76px;
     }
 
     input {
@@ -172,7 +175,7 @@ button {
 
         margin: auto;
         text-align: center;
-        margin-left: 70px;
+        margin-left: 134px;
         width: auto;
         margin-top: 10px;
     }
@@ -184,11 +187,12 @@ button {
     button {
 
         padding: 5px;
-        margin-left: 112px;  
+        margin-left: 118px;  
         border-radius: 5px;
         background-color: black;
         color: #fff;  
         cursor: pointer;
+        margin-top: 30px;
   }
 
   #res2{
