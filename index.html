@@ -39,7 +39,7 @@
             const password = document.getElementById('password').value;
 
 
-            axios.post('', {
+            axios.post('https://tello-login-form.herokuapp.com/user', {
                 "Email": email,
                 "Password": password
             })
@@ -56,7 +56,7 @@
 
         const footer = () => {
 
-            axios.get('')
+            axios.get('https://tello-login-form.herokuapp.com/user')
                 .then(function (response) {
                     // handle success
                     // console.log(response.data);
