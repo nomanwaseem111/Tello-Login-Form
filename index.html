@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tello Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+
+    <form onsubmit="login(); return false">
+        <img src="/tello_cast_big_logo.2ea80e12.png" alt="" class="logo">
+        <h3>Login in</h3>
+        <input type="email" id="email" name="email" placeholder="Email Address" required><br>
+        <input type="password" id="password" name="password" placeholder="Password" required><br>
+        <button class="btn">Log in</button>
+        <div id="res"></div>
+        <img src="/download.png" class="side" alt="">
+        <button onclick="footer()"> get data ? </button>
+        <div id="res2"></div>
+
+    </form>
+
+    <script>
+
+        const login = () => {
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+
+            axios.post('', {
+                "Email": email,
+                "Password": password
+            })
+                .then(function (response) {
+                    // console.log(response.data);
+
+                    document.getElementById('res').innerHTML = `${response.data}`
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+        }
+
+        const footer = () => {
+
+            axios.get('')
+                .then(function (response) {
+                    // handle success
+                    // console.log(response.data);
+                    response.data.map(eachUser => {
+                        document.getElementById('res2').innerHTML += `Email : ${eachUser.Email} Password : ${eachUser.Password} <br>`
+                    })
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>
