@@ -99,6 +99,7 @@ app.delete('/user/:userId', (req, res) => { //delete single user
     res.send('user not found')
  }else{
    delete users[userId];
+   res.send('user is deleted')
  }
 
 })
