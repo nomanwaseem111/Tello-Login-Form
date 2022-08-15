@@ -37,7 +37,7 @@ app.get('/user/:userId', (req, res) => { //get single user
   let isFound = false
   for(let i = 0; i < users.length; i++){
       
-        if(users[i].id === userId){
+        if(users[i].id == userId){
           res.send(users[i])
           isFound = true
           break;
