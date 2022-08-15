@@ -18,8 +18,8 @@ app.post('/user', (req, res) => {
   let newUser = {
 
     id: randomNumber(),
-    Email: email,
-    Password: password
+    Email: req.body.email,
+    Password: req.body.password
   }
 
   users.push(newUser);
