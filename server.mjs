@@ -85,7 +85,7 @@ app.put('/user/:userId', (req, res) => { // modify single user
 app.delete('/user/:userId', (req, res) => { //delete single user
 
   let userId = req.params.userId;
-
+  let userIndex = -1
 
   for(let i = 0; i < users.length; i++){
       
