@@ -7,107 +7,104 @@ const port = process.env.PORT || 3000
 
 let users = []
 
-const randomNumber = () =>{
- 
-   return Math.floor(Math.random()*100000)
-   
+const randomNumber = () => {
+
+  return Math.floor(Math.random() * 10000)
+
 }
 
 app.post('/user', (req, res) => {
 
-    console.log(req.body);
+  console.log(req.body);
 
-    let newUser = {
+  let newUser = {
 
-     id:randomNumber(),
-     email:  req.body.email,
-     password:req.body.password
+    id: randomNumber(),
+    Email: req.body.email,
+    Password: req.body.password
 
-    }
+  }
 
-    users.push(newUser)
+  users.push(newUser)
 
-  res.send('Agent Logged in!')
+  res.send('user created')
 })
 
 app.get('/user/:userId', (req, res) => { //get single user
 
-
   let userId = req.params.userId;
   let isFound = false
 
-  for(let i = 0; i < users.length; i++){
+  for (let i = 0; i < users.length; i++) {
 
-    if(users[i].id == userId){
-      res.send(users[i]);
+    if (users[i].id == userId) {
+      res.send(users[i])
       isFound = true
       break;
     }
   }
-  if(!isFound){res.send('user not found')}
+  if (!isFound) { res.send('user not found') }
 
 })
 
 
 app.get('/users', (req, res) => { // get multiple user
-    res.send(users)
-  })
 
-  app.put('/user/:userId', (req, res) => { // modify single user
+  res.send(users)
 
-    let user = req.params.userId;
-    let userIndex = -1
+})
 
-    for(let i = 0; i < users.length; i++){
+app.put('/user/:userId', (req, res) => { // modify single user
 
-      if(users[i].id == userId){
-        userIndex = i;        
-        break;
-      }
+  let userId = req.params.userId;
+  let userIndex = -1
+  for (let i = 0; i < users.length; i++) {
+
+    if (users[i].id == userId) {
+      userIndex = i
+      break;
     }
-  
-     if(userIndex === -1){
-      res.send('user not Found')
-     }else{
-
-       if(req.body.email)    users[userIndex].email = req.body.email
-       if(req.body.password) users[userIndex].password = req.body.password
-
-     }
-     res.send(users[userIndex])
-  })
-
-
-  app.delete('/user/:userId', (req, res) => { //delete single user
+  }
     
-    let user = req.params.userId;
-    let userIndex = -1
-
-    for(let i = 0; i < users.length; i++){
-
-      if(users[i].id == userId){
-        userIndex = i;        
-        break;
-      }
-    }
-  
-    if(userIndex === -1){
-      res.send('user not Found')
-     }else{
-      delete users[userIndex];
-      res.send('user is Deleted')
-
-     }
-    
-    
-  })
-
-  app.delete('/users', (req, res) => { //delete multiple user
+   if(userIndex === -1){
+    res.send('user not found')
+   }else{
+ 
+     if(req.body.email) users[userIndex].email = req.body.email
+     if(req.body.password) users[userIndex].password = req.body.password
    
-     users = []
+       res.send(users[userIndex])
+   }
+})
+
+
+app.delete('/user/:userId', (req, res) => { //delete single user
+
+  let userId = req.params.userId;
+  let userIndex = -1
+  for (let i = 0; i < users.length; i++) {
+
+    if (users[i].id == userId) {
+      userIndex = i
+      break;
+    }
+  }
     
-    res.send('Deleted all users')
-  })
+   if(userIndex === -1){
+    res.send('user not found')
+   }else{
+    delete users[userIndex]
+   }
+
+})
+
+app.delete('/users', (req, res) => { //delete multiple user
+ 
+   users = []
+   
+   res.send('All Users Deleted')
+
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
