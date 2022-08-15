@@ -15,36 +15,36 @@ const randomNumber = () => {
 
 app.post('/user', (req, res) => {
 
-  console.log(req.body);
-
   let newUser = {
 
     id: randomNumber(),
-    Email: req.body.email,
-    Password: req.body.password
-
+    Email: email,
+    Password: password
   }
 
-  users.push(newUser)
+  users.push(newUser);
 
-  res.send('user created')
+  res.send('user is created')
+
+
+
+
 })
 
 app.get('/user/:userId', (req, res) => { //get single user
 
   let userId = req.params.userId;
   let isFound = false
-
-  for (let i = 0; i < users.length; i++) {
-
-    if (users[i].id == userId) {
-      res.send(users[i])
-      isFound = true
-      break;
-    }
+  for(let i = 0; i < users.length; i++){
+      
+        if(users[i].id === userId){
+          res.send(users[i])
+          isFound = true
+          break;
+        }
+      
   }
-  if (!isFound) { res.send('user not found') }
-
+  if(!isFound) {res.send('user not found')}
 })
 
 
@@ -56,53 +56,58 @@ app.get('/users', (req, res) => { // get multiple user
 
 app.put('/user/:userId', (req, res) => { // modify single user
 
+
   let userId = req.params.userId;
   let userIndex = -1
-  for (let i = 0; i < users.length; i++) {
 
-    if (users[i].id == userId) {
-      userIndex = i
+  for(let i = 0; i < users.length; i++){
+      
+    if(users[i].id === userId){
+      userIndex = i;
       break;
     }
+  
   }
-    
-   if(userIndex === -1){
-    res.send('user not found')
-   }else{
- 
+  
+  if(userIndex === -1){
+     res.send('user not found')
+  }else{
+
      if(req.body.email) users[userIndex].email = req.body.email
      if(req.body.password) users[userIndex].password = req.body.password
-   
-       res.send(users[userIndex])
-   }
+
+     res.send(users[userIndex])
+  }
+
 })
 
 
 app.delete('/user/:userId', (req, res) => { //delete single user
 
   let userId = req.params.userId;
-  let userIndex = -1
-  for (let i = 0; i < users.length; i++) {
 
-    if (users[i].id == userId) {
-      userIndex = i
+
+  for(let i = 0; i < users.length; i++){
+      
+    if(users[i].id === userId){
+      userIndex = i;
       break;
     }
+  
   }
-    
-   if(userIndex === -1){
+  if(userIndex === -1){
     res.send('user not found')
-   }else{
-    delete users[userIndex]
-   }
+ }else{
+   delete users[userId];
+ }
 
 })
 
 app.delete('/users', (req, res) => { //delete multiple user
- 
-   users = []
-   
-   res.send('All Users Deleted')
+
+    users = []
+
+   res.send('All users is Deleted')
 
 })
 
