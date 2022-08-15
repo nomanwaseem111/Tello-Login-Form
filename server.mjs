@@ -33,7 +33,7 @@ app.post('/user', (req, res) => {
 app.get('/user/:userId', (req, res) => { //get single user
 
 
-  let user = req.params.userId;
+  let userId = req.params.userId;
   let isFound = false
 
   for(let i = 0; i < users.length; i++){
