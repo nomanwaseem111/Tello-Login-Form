@@ -25,7 +25,7 @@ app.post('/user', (req, res) => {
 
     }
 
-    user.push(newUser)
+    users.push(newUser)
 
   res.send('Agent Logged in!')
 })
