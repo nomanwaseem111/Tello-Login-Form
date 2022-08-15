@@ -98,7 +98,7 @@ app.delete('/user/:userId', (req, res) => { //delete single user
   if(userIndex === -1){
     res.send('user not found')
  }else{
-   delete users[userId];
+   delete users[userIndex];
    res.send('user is deleted')
  }
 
