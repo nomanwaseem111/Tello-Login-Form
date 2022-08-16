@@ -93,16 +93,14 @@ app.delete('/user/:userId', (req, res) => { //delete single user
       userIndex = i;
       break;
     }
+}
 
-    if(userIndex === -1){
-      res.send('user not found')
-   }else{
-      users.splice(userIndex,1)
-      res.send('user is deleted')
-   }
-  
-  }
-  
+  if(userIndex === -1){
+    res.send('user not found')
+ }else{
+    users.splice(userIndex,1)
+    res.send('user is deleted')
+ }
 
 })
 
